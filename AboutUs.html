@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Us</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Background image */
+.hero img {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    transform: translateY(0px);
+    transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* Dark overlay */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+}
+
+/* HERO TEXT */
+.hero-text {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hero-text h1 {
+    font-size: 80px;
+}
+
+.hero-text p {
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+/* CONTENT SECTION */
+.content {
+    background: rgb(255, 255, 255);
+    padding: 120px 20px;
+    max-width: 800px;
+    margin: auto;
+    line-height: 2.0;
+    font-size: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+    <img id="bg" src="https://img.pikbest.com/wp/202405/room-corner-vintage-wall-in-3d-scene-of-an-abstract-background_9845623.jpg!sw800" alt="About Us Background">
+    
+    <div class="hero-text">
+        <h1>About Us</h1>
+        <p>The Salem Reporters</p>
+    </div>
+</div>
+
+<div class="content">
+    <h2>About Us – The Salem Reporters</h2>
+    <p>
+        We are The Salem Reporters, a small but determined group of writers committed to sharing what is truly happening in Salem. During a time when fear and suspicion seem to guide people’s actions, we believe it is more important than ever to record events carefully and honestly.    
+    </p>
+    <p>
+        Our team follows the ongoing trials, listens to the voices of the townspeople, and observes the actions of the court. We report on accusations, testimonies, and the growing tension that has taken over the village. While many rush to judgment, we take a step back to question what we see and hear, understanding that not everything is as simple as it seems.    
+    </p>
+    <p>
+        We know that speaking the truth in a time like this is not always easy. Fear can change people, and rumors can spread quickly, often doing more harm than good. That is why we aim to present information in a way that allows readers to think for themselves rather than just accept what they are told.
+    </p>
+    <p>
+        At The Salem Reporters, we believe that every story has more than one side. Whether it is someone accused, someone accusing, or someone simply caught in the middle, their voices matter. Our goal is to make sure those voices are heard and remembered.
+    </p>
+</div>
+
+<script>
+const bg = document.getElementById("bg");
+const hero = document.getElementById("hero");
+
+window.addEventListener("scroll", () => {
+    let scrollY = window.scrollY;
+
+    // Move image up as user scrolls
+    bg.style.transform = `translateY(${scrollY * 0.4}px)`;
+
+    // Fade out image
+    let opacity = 1 - scrollY / 500;
+    bg.style.opacity = opacity < 0 ? 0 : opacity;
+});
+</script>
+
+</body>
+</html>
