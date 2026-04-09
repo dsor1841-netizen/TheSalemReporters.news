@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Salem Reporters</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: white;
+      color: black;
+      line-height: 1.5;
+    }
+     a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .top-bar {
+      border-bottom: 1px solid black;
+      padding: 10px 40px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-transform: uppercase;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+      .top-links,
+    .top-contact {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .main-header {
+      border-bottom: 2px solid black;
+      padding: 22px 40px;
+      text-align: center;
+    }
+
+    .site-title {
+      font-size: 42px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+     .nav-bar {
+      border-bottom: 1px solid black;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .nav-bar a:hover,
+    .clickable:hover h1,
+    .clickable:hover h2,
+    .clickable:hover h3,
+    .clickable:hover h4 {
+      text-decoration: underline;
+    }
+  .container {
+      max-width: 1400px;
+      margin: 30px auto;
+      padding: 0 30px 40px;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 30px;
+    }
+
+    .left-column,
+    .center-column,
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+       .article-card {
+      border-bottom: 1px solid #d9d9d9;
+      padding-bottom: 18px;
+    }
+
+    .article-card:last-child {
+      border-bottom: none;
+    }
+
+    .article-card h2,
+    .article-card h3,
+    .article-card h4 {
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
+    .article-card p {
+      font-size: 14px;
+      color: #222;
+      margin-bottom: 10px;
+    }
+     .meta {
+      font-size: 12px;
+      color: #555;
+      text-transform: uppercase;
+    }
+
+    .featured {
+      border: 1px solid #d9d9d9;
+      padding: 14px;
+    }
+
+    .featured-image {
+      height: 320px;
+      background: #f3f3f3;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+     .tag {
+      display: inline-block;
+      border: 1px solid black;
+      padding: 5px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .featured h1 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      font-weight: normal;
+    }
+
+    .featured p {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mini-article {
+      display: flex;
+      gap: 12px;
+      border-top: 1px solid #d9d9d9;
+      padding-top: 15px;
+    }
+
+    .mini-article img {
+      width: 120px;
+      height: 85px;
+      flex-shrink: 0;
+      background: #f3f3f3;
+    }
+.mini-article h4 {
+      font-size: 18px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      font-weight: normal;
+    }
+
+    .trending-box {
+      border-left: 1px solid black;
+      padding-left: 20px;
+    }
+
+    .trending-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #d9d9d9;
+      padding-bottom: 8px;
+    }
+.trending-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .trending-list li {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: start;
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 14px;
+    }
+
+    .trend-number {
+      font-size: 24px;
+      color: #999;
+    }
+    .newsletter {
+      border: 1px solid black;
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+    .newsletter h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
+    .newsletter p {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+ .newsletter input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid black;
+      margin-bottom: 10px;
+      font-family: inherit;
+    }
+
+    .newsletter button {
+      width: 100%;
+      padding: 12px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      text-transform: uppercase;
+    }
+    @media (max-width: 1100px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .trending-box {
+        border-left: none;
+        border-top: 1px solid black;
+        padding-left: 0;
+        padding-top: 20px;
+      }
+
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+  
+      @media (max-width: 700px) {
+      .top-bar,
+      .main-header,
+      .nav-bar {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .site-title {
+        font-size: 30px;
+      }
+
+      .featured h1 {
+        font-size: 26px;
+      }
+
+      .mini-article {
+        flex-direction: column;
+      }
+      .mini-article img {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-links">
+      <a href="#">Events</a>
+      <a href="#">Breaking News</a>
+      <a href="AboutUs.html">About Us</a>
+    </div>
+    <div class="top-contact">
+      <span>Call Us: (252) 776-7090</span> 
+      <span>SalemReporters@news.com</span> 
+       </div>
+  </div>
+
+  <header class="main-header">
+    <div class="site-title">The Salem Reporters</div> 
+  </header>
+
+  <nav class="nav-bar">
+    <a href="Opinions.html">Opinions</a>
+    <a href="#">Politics</a>
+    <a href="#">Live Tv</a>
+    <a href="#">Experiences</a>
+    <a href="#">Culture</a>
+    <a href="#">World</a>
+    
+     </nav>
+
+  <main class="container">
+    <section class="left-column">
+      <a class="article-card clickable" href="TownDivided.html">
+        <h3>Town Divided Over Court Decisions</h3>
+        <p>Fear in Salem is growing quietly but steadily, affecting how residents speak, act, and trust those around them.</p>
+        <div class="meta">By Danna Paola Soriano Gomez • 2 Days ago</div> 
+      </a>
+
+      <a class="article-card clickable" href="Life.html"> 
+        <h3>Life Inside Salem Village Under Growing Tension</h3>
+        <p>Salem Village is facing rising tension as fear and suspicion continue to change daily life, making people more cautious around one another.</p>
+        <div class="meta">By Danna Paola Soriano Gomez • A Day ago</div>
+      </a>
+
+      <a class="article-card clickable" href="Trade.html">
+        <h3>Trade Activity Slows Following Court Sessions</h3>
+        <p>Trade in the Massachusetts Bay Colony has slowed as court proceedings continue, with merchants and travelers becoming more careful in their daily routines.</p>
+        <div class="meta">By Danna Paola Soriano Gomez • 18 Hours ago</div>
+      </a>
+      <div class="newsletter">
+        <h3>Subscribe Our Newsletter</h3>
+        <p>Enter your email here.</p>
+        <input type="email" placeholder="Your email address">
+        <button>Subscribe</button>
+      </div>
+    </section>
+
+    <section class="center-column">
+      <a class="featured clickable" href="Article2.html"> 
+        <div class="tag">Main Story</div>
+        <div class="featured-image">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgClSLzDjh-KIPXJI1eEuz2NkmuWwxiDqWkuaggsqaS7cTskyzpofYhfl9lUr91VG39Ws2_1GBYRTATTkbXVv5SZiPe0TlGfPy-UCtai1uie5_8vGICv5NgYRzK8usIKTETB_GGzy5-BgVe/s1600/thecrucible.jpg" alt="Main article image"> <!-- WRITE HERE: replace image link -->
+        </div>
+        <h1>Girls Caught Dancing In The Woods!</h1>
+        <p>Reports from a small Puritan town describe a disturbing incident in which a group of girls were allegedly found dancing in the woods late at night, triggering immediate fear and suspicion among residents.</p>
+        <div class="meta">By Danna Paola Soriano Gomez • A Day ago</div> 
+      </a>
+      <div class="mini-grid">
+        <a class="mini-article clickable" href="JohnProctor.html"> 
+          <img src="https://everloved.com/media/photos/deceased-photos/8fc3bbfe-8b9a-443b-839c-388b01b156e7.trimmed.jpeg" alt="Article image"> <!-- WRITE HERE: replace image link -->
+          <div>
+            <h4>Proctor Refuses To Confess!</h4> 
+            <p>Salem saw one of its most powerful moments today as John Proctor refused to sign a false confession to save his life.</p>
+            <div class="meta">By Ha'awi Aquino • 2 Days ago</div> 
+          </div>
+        </a>
+
+        <a class="mini-article clickable" href="ElizabethProctor.html"> 
+          <img src="https://m.media-amazon.com/images/M/MV5BODZkMTRmMWMtNTQzNy00NjNmLWFmNmYtZmU4ZGUzNWRlNmEwXkEyXkFqcGc@._V1_.jpg" alt="Article image"> <!-- WRITE HERE: replace image link -->
+          <div>
+            <h4>Elizabeth Proctor Taken to Court</h4> 
+            <p>Elizabeth Proctor was brought before the court this week as hysteria in Salem continues to grow.</p>
+            <div class="meta">By Ha'awi Aquino • 2 Days ago</div> 
+          </div>
+        </a>
+        <a class="mini-article clickable" href="Hale.html"> 
+          <img src="https://m.media-amazon.com/images/M/MV5BZWRlMWIyY2EtMTBlMC00MmY3LTk2MjktZWQ2Y2U5NjRkODAyXkEyXkFqcGc@._V1_QL75_UX409_.jpg" alt="Article image"> <!-- WRITE HERE: replace image link -->
+          <div>
+            <h4>Minister Hale Questions Court</h4>
+            <p>Reverend Hale of Beverly arrived in Salem as an expert called to uncover witchcraft, quickly taking charge by questioning the accused and identifying supposed signs of the devil’s work.</p> <!-- WRITE HERE: summary -->
+            <div class="meta">By Derek McKnight • A day ago</div> 
+          </div>
+        </a>
+      </div>
+      </section>
+
+    <aside class="right-column">
+      <div class="trending-box">
+        <div class="trending-title">Trending Topics</div>
+        <ol class="trending-list">
+          <li>
+            <div class="trend-number">1</div>
+            <a class="clickable" href="Danforth.html">
+              <h4>Deputy Governor Danforth holds the court</h4> 
+            </a>
+          </li>
+
+          <li>
+            <div class="trend-number">2</div>
+            <a class="clickable" href="Hale.html"> 
+              <h4>Minister Hale Questions Court</h4>
+            </a>
+          </li>
+          <li>
+            <div class="trend-number">3</div>
+            <a class="clickable" href="ElizabethProctor.html"> 
+              <h4>Elizabeth Proctor Taken to Court</h4>
+            </a>
+          </li>
+
+          <li>
+            <div class="trend-number">4</div>
+            <a class="clickable" href="Proctor.html"> 
+              <h4>Proctor Refuses To Confess!</h4>
+            </a>
+          </li>
+
+          <li>
+            <div class="trend-number">5</div>
+            <a class="clickable" href="GirlsDancing.html"> 
+              <h4>Girls Caught Dancing In The Woods</h4>
+            </a>
+          </li>
+        </ol>
+        </div>
+
+      <a class="article-card clickable" href="Danforth.html"> <!-- WRITE HERE: put bottom article link -->
+        <img src="https://m.media-amazon.com/images/M/MV5BMDhiYTY0MjctMjEwOC00OTNjLWFkOWYtMjY1ZDRhMDhhYmQyXkEyXkFqcGc@._V1_.jpg" alt="Bottom article image" style="height: 210px; margin-bottom: 12px;"> <!-- WRITE HERE: replace image link -->
+        <h3>Special Report: Deputy Governor Danforth holds the court; accused remain in custody as examinations continue.</h3> <!-- WRITE HERE: title -->
+        <div class="meta">By Derek McKnight • 23 minutes ago</div> <!-- WRITE HERE: author and time -->
+      </a>
+    </aside>
+  </main>
+</body>
+</html>
